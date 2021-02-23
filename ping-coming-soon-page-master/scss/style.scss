@@ -1,0 +1,148 @@
+﻿$paleBlue:hsl(223, 100%, 88%);
+$lightred:hsl(354, 100%, 66%);
+$dakblue:hsl(209, 33%, 12%);
+@mixin setscale($width,$height){
+    width:$width;
+    height:$height;
+}
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Libre Franklin', sans-serif;
+}
+body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.logo{
+    @include setscale(60px,20px);
+}
+header{
+    color:grey;
+    text-align:center;
+    p:first-of-type{
+          font-weight:300;
+         font-size:x-large;
+     }
+     p{
+         font-size:small;
+     }
+     strong{
+         color:black;
+     }
+}
+form > *{
+    display:block;
+}
+form{
+    width:100%;
+}
+input {
+    margin: 10px auto;
+    @include setscale(80%,50px);
+    border-radius: 30px;
+    outline: none;
+    color: lightgrey;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    font-size: medium;
+}
+input:focus{
+    color:black;
+    border:solid black;
+}
+input:focus #error{
+    display:none;
+}
+button {
+    @extend input;
+    background-color: blue;
+    color:white;
+    box-shadow:5px 5px 5px $paleBlue;
+    border:none;
+    font-weight:700;
+    outline:none;
+}
+button:hover{
+    background:white;
+    color:black;
+    transition:1s;
+}
+button:target{
+    color:blue;
+    outline:none;
+    transition:1s;
+}
+.dashboard{
+    @include setscale(100%,auto);
+}
+footer{
+    @include setscale(100%,auto);
+    nav{
+       @include setscale(75%,auto);
+       margin:100px auto;
+    }
+    i{
+        margin-left:20%;
+        color:blue;
+    }
+    p{
+        margin:0;
+        color:lightgrey;
+        text-align:center;
+        font-size:small; 
+    }
+}
+#error{
+    display:none;
+    color:red;
+    text-align:center;
+    font-size:small;
+}
+@media screen and (min-width:1024px){
+    body{
+        padding:5%;
+    }
+    header{
+        p:first-of-type{
+            font-size:50px;
+            margin:20px;
+        }
+        p{
+            font-size:xx-large;
+            margin:0;
+        }
+    }
+    .logo {
+        @include setscale(100px,30px);
+    }
+    form > * {
+        display: inline-block;
+    }
+    form{
+        position:relative;
+        margin-top:20px;
+        width:75%;
+        input{
+            @include setscale(60%,auto);
+
+        }
+        button{
+            margin-left:50px;
+            width:25%;
+        }
+    }
+    .dashboard{
+        @include setscale(80%,auto);
+        margin-top:50px;
+    }
+    #error{
+        position:absolute;
+        left:10px;
+        top:80%;
+    }
+}
